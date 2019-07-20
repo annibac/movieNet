@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="UserSet" EntityType="DataModel.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MoviesSet" EntityType="DataModel.Store.MoviesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RateSet" EntityType="DataModel.Store.RateSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UserRate" Association="DataModel.Store.UserRate">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Rate" EntitySet="RateSet" />
+    </AssociationSet>
+    <AssociationSet Name="MoviesRate" Association="DataModel.Store.MoviesRate">
+      <End Role="Movies" EntitySet="MoviesSet" />
+      <End Role="Rate" EntitySet="RateSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserMovies" Association="DataModel.Store.UserMovies">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Movies" EntitySet="MoviesSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MoviesSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="genre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RateSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rate" Type="bigint" Nullable="false" />
+    <Property Name="comment" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="Movies_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UserRate">
+    <End Role="User" Type="DataModel.Store.UserSet" Multiplicity="1" />
+    <End Role="Rate" Type="DataModel.Store.RateSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rate">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MoviesRate">
+    <End Role="Movies" Type="DataModel.Store.MoviesSet" Multiplicity="1" />
+    <End Role="Rate" Type="DataModel.Store.RateSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rate">
+        <PropertyRef Name="Movies_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserMovies">
+    <End Role="User" Type="DataModel.Store.UserSet" Multiplicity="1" />
+    <End Role="Movies" Type="DataModel.Store.MoviesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Movies">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

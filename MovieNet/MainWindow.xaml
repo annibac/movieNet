@@ -1,0 +1,15 @@
+﻿<Window x:Class="MovieNet.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MovieNet"
+        mc:Ignorable="d"
+        DataContext="{Binding Source= {StaticResource VMLocator}, Path=MoviesList}"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="bienvenue_label" Content="{Binding Title}" HorizontalAlignment="Left" Margin="209,97,0,0" VerticalAlignment="Top" Width="358" FontFamily="SimSun" Background="White" RenderTransformOrigin="1.767,0.613"></Label>
+        <Button x:Name="movies_list_button" Command="{Binding GoToList}" Content="Voir la liste des films" HorizontalAlignment="Left" Margin="298,187,0,0" VerticalAlignment="Top" Width="152" />
+
+    </Grid>
+</Window>

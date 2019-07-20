@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserSet" EntityType="DataModel.User" />
+    <EntitySet Name="MoviesSet" EntityType="DataModel.Movies" />
+    <AssociationSet Name="RateUser" Association="DataModel.RateUser">
+      <End Role="Rate" EntitySet="RateSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <EntitySet Name="RateSet" EntityType="DataModel.Rate" />
+    <AssociationSet Name="RateMovies" Association="DataModel.RateMovies">
+      <End Role="Rate" EntitySet="RateSet" />
+      <End Role="Movies" EntitySet="MoviesSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" Nullable="false" />
+    <Property Name="password" Type="String" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" />
+    <NavigationProperty Name="Rate" Relationship="DataModel.RateUser" FromRole="User" ToRole="Rate" />
+  </EntityType>
+  <EntityType Name="Movies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" />
+    <Property Name="description" Type="String" Nullable="false" />
+    <NavigationProperty Name="Rate" Relationship="DataModel.RateMovies" FromRole="Movies" ToRole="Rate" />
+  </EntityType>
+  <EntityType Name="Rate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rate" Type="Int64" Nullable="false" />
+    <Property Name="comment" Type="String" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="DataModel.RateUser" FromRole="Rate" ToRole="User" />
+    <NavigationProperty Name="Movies" Relationship="DataModel.RateMovies" FromRole="Rate" ToRole="Movies" />
+  </EntityType>
+  <Association Name="RateUser">
+    <End Type="DataModel.Rate" Role="Rate" Multiplicity="1" />
+    <End Type="DataModel.User" Role="User" Multiplicity="*" />
+  </Association>
+  <Association Name="RateMovies">
+    <End Type="DataModel.Rate" Role="Rate" Multiplicity="1" />
+    <End Type="DataModel.Movies" Role="Movies" Multiplicity="*" />
+  </Association>
+</Schema>

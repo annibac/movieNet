@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="UserSet" EntityType="DataModel.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MoviesSet" EntityType="DataModel.Store.MoviesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RateSet" EntityType="DataModel.Store.RateSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UserRate" Association="DataModel.Store.UserRate">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Rate" EntitySet="RateSet" />
+    </AssociationSet>
+    <AssociationSet Name="MoviesRate" Association="DataModel.Store.MoviesRate">
+      <End Role="Movies" EntitySet="MoviesSet" />
+      <End Role="Rate" EntitySet="RateSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserMovies" Association="DataModel.Store.UserMovies">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Movies" EntitySet="MoviesSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MoviesSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="genre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RateSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rate" Type="bigint" Nullable="false" />
+    <Property Name="comment" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="Movies_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UserRate">
+    <End Role="User" Type="DataModel.Store.UserSet" Multiplicity="1" />
+    <End Role="Rate" Type="DataModel.Store.RateSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rate">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MoviesRate">
+    <End Role="Movies" Type="DataModel.Store.MoviesSet" Multiplicity="1" />
+    <End Role="Rate" Type="DataModel.Store.RateSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rate">
+        <PropertyRef Name="Movies_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserMovies">
+    <End Role="User" Type="DataModel.Store.UserSet" Multiplicity="1" />
+    <End Role="Movies" Type="DataModel.Store.MoviesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Movies">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserSet" EntityType="DataModel.User" />
+          <EntitySet Name="MoviesSet" EntityType="DataModel.Movies" />
+          <EntitySet Name="RateSet" EntityType="DataModel.Rate" />
+          <AssociationSet Name="UserRate" Association="DataModel.UserRate">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Rate" EntitySet="RateSet" />
+          </AssociationSet>
+          <AssociationSet Name="MoviesRate" Association="DataModel.MoviesRate">
+            <End Role="Movies" EntitySet="MoviesSet" />
+            <End Role="Rate" EntitySet="RateSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserMovies" Association="DataModel.UserMovies">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Movies" EntitySet="MoviesSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Rate" Relationship="DataModel.UserRate" FromRole="User" ToRole="Rate" />
+          <NavigationProperty Name="Movies" Relationship="DataModel.UserMovies" FromRole="User" ToRole="Movies" />
+        </EntityType>
+        <EntityType Name="Movies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <Property Name="description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Rate" Relationship="DataModel.MoviesRate" FromRole="Movies" ToRole="Rate" />
+          <Property Name="genre" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DataModel.UserMovies" FromRole="Movies" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rate" Type="Int64" Nullable="false" />
+          <Property Name="comment" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DataModel.UserRate" FromRole="Rate" ToRole="User" />
+          <NavigationProperty Name="Movies" Relationship="DataModel.MoviesRate" FromRole="Rate" ToRole="Movies" />
+        </EntityType>
+        <Association Name="UserRate">
+          <End Type="DataModel.User" Role="User" Multiplicity="1" />
+          <End Type="DataModel.Rate" Role="Rate" Multiplicity="*" />
+        </Association>
+        <Association Name="MoviesRate">
+          <End Type="DataModel.Movies" Role="Movies" Multiplicity="1" />
+          <End Type="DataModel.Rate" Role="Rate" Multiplicity="*" />
+        </Association>
+        <Association Name="UserMovies">
+          <End Type="DataModel.User" Role="User" Multiplicity="1" />
+          <End Type="DataModel.Movies" Role="Movies" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="DataModelContainer">
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MoviesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Movies)">
+        <MappingFragment StoreEntitySet="MoviesSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="genre" ColumnName="genre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RateSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Rate)">
+        <MappingFragment StoreEntitySet="RateSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserRate" TypeName="DataModel.UserRate" StoreEntitySet="RateSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Rate">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MoviesRate" TypeName="DataModel.MoviesRate" StoreEntitySet="RateSet">
+      <EndProperty Name="Movies">
+        <ScalarProperty Name="Id" ColumnName="Movies_Id" />
+      </EndProperty>
+      <EndProperty Name="Rate">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserMovies" TypeName="DataModel.UserMovies" StoreEntitySet="MoviesSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Movies">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
