@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieNet", "MovieNet\MovieNet.csproj", "{F910D50B-31A3-4AA2-8610-3C02C55E36F3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E5C535DD-C7E4-4F07-858C-39D4B882C6AA} = {E5C535DD-C7E4-4F07-858C-39D4B882C6AA}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesDatabase", "MoviesDatabase\MoviesDatabase.csproj", "{E5C535DD-C7E4-4F07-858C-39D4B882C6AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F910D50B-31A3-4AA2-8610-3C02C55E36F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F910D50B-31A3-4AA2-8610-3C02C55E36F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F910D50B-31A3-4AA2-8610-3C02C55E36F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F910D50B-31A3-4AA2-8610-3C02C55E36F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5C535DD-C7E4-4F07-858C-39D4B882C6AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5C535DD-C7E4-4F07-858C-39D4B882C6AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5C535DD-C7E4-4F07-858C-39D4B882C6AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5C535DD-C7E4-4F07-858C-39D4B882C6AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE718A7E-0D48-4214-A681-46A8A7D326F0}
+	EndGlobalSection
+EndGlobal
