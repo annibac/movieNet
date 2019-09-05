@@ -13,14 +13,51 @@
         <Grid.Background>
             <ImageBrush ImageSource="/MovieNet;component/images/IMG_1413.png" Opacity="0.5"/>
         </Grid.Background>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="418" Margin="52,20,0,0" Stroke="Black" VerticalAlignment="Top" Width="711"/>
-        <ListBox x:Name="MovieListDef" ItemsSource="{Binding Users}" DisplayMemberPath="Login" SelectedItem="{Binding SelectedItem}" Margin="62,96,46,136"/>
-        <Button Command="{Binding ShowMovies }" Content="Voir les films" HorizontalAlignment="Left" Margin="456,39,0,0" VerticalAlignment="Top" Width="196" Height="47" Background="#FF0A1B8E" BorderBrush="#FF0A1B8E" Foreground="White" FontSize="16"/>
-        <Button Command="{Binding AddUser }" Content="Ajoutez un utilisateur" HorizontalAlignment="Left" Margin="161,38,0,0" VerticalAlignment="Top" Width="196" Height="47" Background="#FF8E0A0A" BorderBrush="#FF8E0A0A" Foreground="White" FontSize="16"/>
+        <Rectangle HorizontalAlignment="Left" Height="418" Margin="52,20,0,0" Stroke="Black" VerticalAlignment="Top" Width="711">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/MovieNet;component/images/texture_blanche.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <ListBox x:Name="MovieListDef" ItemsSource="{Binding Users}" DisplayMemberPath="Login" SelectedItem="{Binding SelectedItem}" Margin="78,96,68,136"/>
+        <Button Command="{Binding ShowMovies }" Content="Voir les films" HorizontalAlignment="Left" Margin="456,39,0,0" VerticalAlignment="Top" Width="196" Height="47" Background="#FF0A1B8E" BorderBrush="#FF0A1B8E" Foreground="White" FontSize="16">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
-        <Button Command="{Binding EditUser }" Content="Editer" HorizontalAlignment="Left" Margin="535,365,0,0" VerticalAlignment="Top" Width="196" Height="47" Background="#FFE38F10" BorderBrush="#FFE3D410" Foreground="White" FontSize="16"/>
-        <Button Command="{Binding DeleteUser }" Content="Supprimer" HorizontalAlignment="Left" Margin="303,364,0,0" VerticalAlignment="Top" Width="196" Height="47" Background="Black" BorderBrush="Black" Foreground="White" FontSize="16"/>
-        <Button Command="{Binding InfoUser }" Content="Voir la fiche" HorizontalAlignment="Left" Margin="72,365,0,0" VerticalAlignment="Top" Width="196" Height="47" Background="#FF0DAD9C" BorderBrush="#FF0DAD9C" Foreground="White" FontSize="16"/>
+        <Button Command="{Binding AddUser }" Content="Ajoutez un utilisateur" HorizontalAlignment="Left" Margin="161,38,0,0" VerticalAlignment="Top" Width="196" Height="47" Background="#FF8E0A0A" BorderBrush="#FF8E0A0A" Foreground="White" FontSize="16">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Command="{Binding EditUser }" Content="Editer" HorizontalAlignment="Left" Margin="535,365,0,0" VerticalAlignment="Top" Width="196" Height="47" Background="#FFE38F10" BorderBrush="#FFE3D410" Foreground="White" FontSize="16">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Command="{Binding DeleteUser }" Content="Supprimer" HorizontalAlignment="Left" Margin="303,364,0,0" VerticalAlignment="Top" Width="196" Height="47" Background="#FF424E4D" BorderBrush="Black" Foreground="White" FontSize="16">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Command="{Binding InfoUser }" Content="Voir la fiche" HorizontalAlignment="Left" Margin="72,365,0,0" VerticalAlignment="Top" Width="196" Height="47" Background="#FF0DAD9C" BorderBrush="#FF0DAD9C" Foreground="White" FontSize="16">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
     </Grid>
 </Page>

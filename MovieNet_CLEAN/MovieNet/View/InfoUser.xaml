@@ -13,9 +13,13 @@
         <Grid.Background>
             <ImageBrush ImageSource="/MovieNet;component/images/IMG_1413.png" Opacity="0.5"/>
         </Grid.Background>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="418" Margin="206,20,0,0" Stroke="Black" VerticalAlignment="Top" Width="404"/>
+        <Rectangle HorizontalAlignment="Left" Height="418" Margin="206,20,0,0" Stroke="Black" VerticalAlignment="Top" Width="404">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/MovieNet;component/images/texture_blanche.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
 
-        <Label Content="Profil utilisateur" HorizontalAlignment="Left" Margin="293,20,0,0" VerticalAlignment="Top" Height="61" Width="260" FontSize="28"/>
+        <Label Content="Profil utilisateur" HorizontalAlignment="Left" Margin="293,39,0,0" VerticalAlignment="Top" Height="61" Width="260" FontSize="28"/>
         <Label Content="Username" HorizontalAlignment="Left" Margin="222,115,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Nom" HorizontalAlignment="Left" Margin="222,151,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.347,0.557" FontSize="14"/>
         <Label Content="Prenom" HorizontalAlignment="Left" Margin="222,187,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.405,2.154" FontSize="14"/>

@@ -11,11 +11,36 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="../images/IMG_1413.png" Stretch="UniformToFill" Opacity="0.5"/>
+            <ImageBrush ImageSource="../images/IMG_1413.png" Stretch="UniformToFill" Opacity="0.7" />
         </Grid.Background>
-        <Button Command="{Binding SubscribeCommand}" Content="Inscrivez-vous" HorizontalAlignment="Left" Margin="505,261,0,0" VerticalAlignment="Top" Width="208" Height="48" Background="#FF1C1186" BorderBrush="#FF1C1186" Foreground="White" FontSize="16"/>
-        <Button Command="{Binding LoginCommand}" Content="Connectez-vous" HorizontalAlignment="Left" Margin="76,264,0,0" VerticalAlignment="Top" Width="196" Height="47" Background="#FF8E0A0A" BorderBrush="#FF8E0A0A" Foreground="White" FontSize="16"/>
-        <Label Content="Bienvenue dans cette bibliothèque de fiches de films !" HorizontalAlignment="Left" Margin="109,119,0,0" VerticalAlignment="Top" Height="44" Width="573" FontSize="24" RenderTransformOrigin="0.5,0.5" Background="White">
-        </Label>
+
+        <Border Margin="-6,-3,-5,-8" Background="#7F000000" RenderTransformOrigin="0.5,0.5">
+            <TextBlock Foreground="White"
+                       FontSize="20" TextAlignment="Center"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="32,153,33.2,257.8" Width="746" Height="50">
+                <Run Text="Bienvenue dans cette bibliothèque de fiches de films !" FontSize="27"/>
+            </TextBlock>
+        </Border>
+
+        <Button Command="{Binding SubscribeCommand}" Content="Inscrivez-vous" HorizontalAlignment="Left" Margin="512,331,0,0" VerticalAlignment="Top" Width="208" Height="42" Background="#FF1C1186" BorderBrush="#FF1C1186" Foreground="White" FontSize="16">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Command="{Binding LoginCommand}" Content="Connectez-vous" HorizontalAlignment="Left" Margin="76,327,0,0" VerticalAlignment="Top" Width="196" Height="47" Background="#FF8E0A0A" BorderBrush="#FF8E0A0A" Foreground="White" FontSize="16">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
+
+
+
     </Grid>
 </Page>

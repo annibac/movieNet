@@ -13,9 +13,13 @@
         <Grid.Background>
             <ImageBrush ImageSource="/MovieNet;component/images/IMG_1413.png" Opacity="0.5"/>
         </Grid.Background>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="418" Margin="206,20,0,0" Stroke="Black" VerticalAlignment="Top" Width="404"/>
+        <Rectangle HorizontalAlignment="Left" Height="418" Margin="206,20,0,0" Stroke="Black" VerticalAlignment="Top" Width="404">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/MovieNet;component/images/texture_blanche.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
 
-        <Label Content="Nouvel Utilisateur" HorizontalAlignment="Left" Margin="292,38,0,0" VerticalAlignment="Top" Height="61" Width="234" FontSize="28"/>
+        <Label Content="Nouvel Utilisateur" HorizontalAlignment="Left" Margin="293,45,0,0" VerticalAlignment="Top" Height="61" Width="234" FontSize="28"/>
         <Label Content="Username" HorizontalAlignment="Left" Margin="221,262,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Mot de passe" HorizontalAlignment="Left" Margin="220,293,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Nom" HorizontalAlignment="Left" Margin="222,115,0,0" VerticalAlignment="Top" FontSize="14"/>
@@ -24,9 +28,16 @@
         <TextBox x:Name="lastname" Text="{Binding Lastname }" HorizontalAlignment="Left" Height="21" Margin="373,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" TextChanged="TextBox_TextChanged"/>
         <TextBox x:Name="firstname" Text="{Binding Firstname}" HorizontalAlignment="Left" Height="21" Margin="374,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199"/>
         <TextBox x:Name="email" Text="{Binding Email}" HorizontalAlignment="Left" Height="21" Margin="374,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199"/>
-        <TextBox x:Name="username" Text="{Binding Username}" HorizontalAlignment="Left" Height="24" Margin="372,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" />
+        <TextBox x:Name="username" Text="{Binding Username}" HorizontalAlignment="Left" Height="21" Margin="372,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" />
         <PasswordBox x:Name="password" HorizontalAlignment="Left" Height="21" Margin="373,301,0,0" VerticalAlignment="Top" Width="199"/>
-        <Button CommandParameter="{Binding ElementName=password}" Command="{ Binding Subscribe }"  Content="Ajouter" HorizontalAlignment="Left" Margin="331,373,0,0" VerticalAlignment="Top" Width="143" BorderBrush="#FF822020" Foreground="White" Background="#FF9E1212" Height="39" FontSize="16"/>
+
+        <Button CommandParameter="{Binding ElementName=password}" Command="{ Binding Subscribe }"  Content="Ajouter" HorizontalAlignment="Left" Margin="344,377,0,0" VerticalAlignment="Top" Width="143" BorderBrush="#FF822020" Foreground="White" Background="#FF9E1212" Height="39" FontSize="16">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
     </Grid>
 </Page>

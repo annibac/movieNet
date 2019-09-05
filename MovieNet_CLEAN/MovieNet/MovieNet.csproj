@@ -204,7 +204,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\texture-blanc_1160-786.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoviesDatabase\MoviesDatabase.csproj">
       <Project>{e5c535dd-c7e4-4f07-858c-39d4b882c6aa}</Project>
@@ -216,6 +218,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\IMG_1413.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\texture_blanche.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
